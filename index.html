@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Анализ эффективности — Мегафон Ритейл</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<div class="container">
+			<!-- СТРАНИЦА 1: ВВОД KPI -->
+			<div id="inputPage" class="page active">
+				<h1>Анализ эффективности</h1>
+				<p class="subtitle">Введите % выполнения плана по каждому показателю</p>
+
+				<form id="kpiForm">
+					<div class="form-group">
+						<label for="name">Имя сотрудника</label>
+						<input type="text" id="name" placeholder="Иванов И.И." required />
+					</div>
+
+					<div class="form-group">
+						<label for="revenue">Товарная выручка (% от плана) — вес 40%</label>
+						<input type="number" id="revenue" min="0" step="0.1" required />
+						<div class="info">≤70% → 0%, 70–150% → значение, >150% → 150%</div>
+					</div>
+
+					<div class="form-group">
+						<label for="accessories">Аксессуары (% от плана) — вес 30%</label>
+						<input type="number" id="accessories" min="0" step="0.1" required />
+						<div class="info">≤70% → 0%, 70–150% → значение, >150% → 150%</div>
+					</div>
+
+					<div class="form-group">
+						<label for="finance"
+							>Финансовые услуги (% от плана) — вес 30%</label
+						>
+						<input type="number" id="finance" min="0" step="0.1" required />
+						<div class="info">≤70% → 0%, 70–150% → значение, >150% → 150%</div>
+					</div>
+
+					<button type="submit">Анализировать эффективность</button>
+				</form>
+			</div>
+
+			<!-- СТРАНИЦА 2: РЕЗУЛЬТАТ АНАЛИЗА -->
+			<div id="resultPage" class="page">
+				<h2>Результат для <span id="resultName"></span></h2>
+				<div class="score" id="finalScore"></div>
+
+				<div class="kpi-breakdown" id="breakdown"></div>
+
+				<div class="recommendations">
+					<h3>Рекомендации по корректировкам:</h3>
+					<div id="recList"></div>
+				</div>
+
+				<button id="backToInput" class="secondary">Новый анализ</button>
+			</div>
+
+			<!-- СТРАНИЦА 3: ВОПРОСЫ ПО КАТЕГОРИИ -->
+			<div id="questionsPage" class="page">
+				<div id="questionContent"></div>
+				<div id="errorMsg" class="error"></div>
+				<button id="nextQuestion" style="display: none">Далее →</button>
+				<button id="finishQuestions" style="display: none" class="secondary">
+					Завершить
+				</button>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
